@@ -5,9 +5,11 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    user = current_user
+    user_id = user.id
   	@question = Question.create(parameters)
-  	#byebug
-  	
+    @question.update(user_id: user_id)
+    
   	redirect_to questions_path  	
   end
 
