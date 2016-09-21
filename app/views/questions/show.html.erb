@@ -18,17 +18,37 @@
   <%= @question.category_name %>
 </p>
 
+<h3>Comments</h3>
+<p>
+  <% @question.comments.each do |comment| %>
+    <p>
+      <strong>Comments for Question:</strong> 
+      <%= comment.content %>
+    </p>
+  <% end %>
+</p>
+<%= form_for([@question, @question.comments.build]) do |f| %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Enter' %>
+  </p>
+<% end %>
+<br/>
+
+<h3>Answers</h3>
 <p>
   <% @question.answers.each do |answer| %>
     <p>
       <strong>Answers:</strong> 
       <%= answer.description%>
+      <%= link_to 'View', question_answer_path(@question, answer) %>
     </p>
   <% end %>
 </p>
 
-
-<!-- <h4>Answers</h4> -->
 <%= form_for([@question, @question.answers.build]) do |f| %>
   <p>
     <%= f.label :description %><br />

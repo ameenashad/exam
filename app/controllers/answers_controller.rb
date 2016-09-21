@@ -5,10 +5,15 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
     @answer.save
     redirect_to question_path(@question)
+
+    
   end
 
   def parameters
     params.require(:answer).permit(:description)
     
+  end
+  def show
+    @answer = Answer.find(params[:id])
   end
 end
