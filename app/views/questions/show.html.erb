@@ -1,0 +1,41 @@
+<p>
+  <strong>Question Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Question Description:</strong>
+  <%= @question.description %>
+</p>
+
+<p>
+  <strong>User id:</strong>
+  <%= @question.user_id %>
+</p>
+
+<p>
+  <strong>Question category:</strong>
+  <%= @question.category_name %>
+</p>
+
+<p>
+  <% @question.answers.each do |answer| %>
+    <p>
+      <strong>Answers:</strong> 
+      <%= answer.description%>
+    </p>
+  <% end %>
+</p>
+
+
+<!-- <h4>Answers</h4> -->
+<%= form_for([@question, @question.answers.build]) do |f| %>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'Enter' %>
+  </p>
+
+<% end %>

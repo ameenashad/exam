@@ -4,6 +4,7 @@ class AddUserIdToAnswer < ActiveRecord::Migration[5.0]
     add_column :answers, :question_id, :integer
     add_column :questions, :user_id, :integer
     
+    
     # remove_column :users, :email, :string
     # rename_column :users, :encrypted_password, :xyz
     # change_column :users, :xyz, :integer
