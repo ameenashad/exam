@@ -1,6 +1,4 @@
-<p>
-  <%= link_to 'Create Question', new_question_path %><br/>
-</p>
+
 
 <p>
   <% @questions.each do |question| %>
@@ -12,4 +10,15 @@
         <%= link_to 'View', question_path(question) %>
   <% end %>
   </p>
+</p>
+<p>
+	<% if user_signed_in? %>
+		
+		<%= link_to 'Logout', destroy_user_session_path %>		
+  		<%= link_to 'Create Question', new_question_path %><br/>
+	
+	<% else %>
+		<%= link_to 'SignUp', new_user_registration_path %> <br/>
+		<%= link_to 'LogIn', new_user_session_path %>
+	<% end %>
 </p>

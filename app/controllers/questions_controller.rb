@@ -7,13 +7,14 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answer = Answer.find(params[:id])
+   # @answer = Answer.find(params[:id])
     
   end
 
 
   def create
     user = current_user
+    # byebug
     user_id = user.id
   	@question = Question.new(parameters)
     @question.user_id = user_id
